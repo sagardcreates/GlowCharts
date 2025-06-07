@@ -74,7 +74,7 @@ const graphData = [
 
 const width = 640;
 const height = 400;
-const margin = { top: 50, right: 110, bottom: 48, left: 40 };
+const margin = { top: 50, right: 100, bottom: 48, left: 40 };
 
 const GlowLine = () => {
   const [hoverX, setHoverX] = useState<number>(0);
@@ -185,14 +185,16 @@ const GlowLine = () => {
               x2={width - margin.right}
               y1={yScale(maxVal)}
               y2={yScale(maxVal)}
-              stroke="#434343"
+              stroke="#181818"
               strokeDasharray="4,4"
+              strokeWidth={2}
             />
             <text
               x={width - margin.right + 5}
               y={yScale(maxVal)}
-              fill="#9E9E9E"
-              fontSize={14}
+              fill="#646464"
+              fontSize={12}
+              fontWeight={500}
               alignmentBaseline="middle"
               dx={6}
             >
@@ -208,14 +210,16 @@ const GlowLine = () => {
               x2={width - margin.right}
               y1={yScale(minVal)}
               y2={yScale(minVal)}
-              stroke="#434343"
+              stroke="#181818"
               strokeDasharray="4,4"
+              strokeWidth={2}
             />
             <text
               x={width - margin.right + 5}
               y={yScale(minVal)}
-              fill="#9E9E9E"
-              fontSize={14}
+              fill="#646464"
+              fontSize={12}
+              fontWeight={500}
               alignmentBaseline="middle"
               dx={6}
             >
@@ -226,11 +230,11 @@ const GlowLine = () => {
 
         <LinePath
           innerRef={pathRef}
-          curve={curveCatmullRom.alpha(0.3)}
+          curve={curveCatmullRom.alpha(0.1)}
           data={graphData}
           x={d => xScale(d.time) ?? 0}
           y={d => yScale(d.value)}
-          stroke="#25221E"
+          stroke="#191816"
           strokeWidth={4}
           strokeLinecap="round"
           fill="none"
@@ -270,13 +274,13 @@ const GlowLine = () => {
             margin.left + halfWidth,
             Math.min(x, width - margin.right - halfWidth)
           );
-          return `translate(${clampedX - halfWidth},${yScale(maxVal) - 50})`;
+          return `translate(${clampedX - halfWidth},${yScale(maxVal) - 48})`;
         })}>
           <rect
             width={172}
             height={32}
             rx={4}
-            fill="#1A1B1B"
+            fill="#121211"
           />
           <text
             x={86}
@@ -284,6 +288,7 @@ const GlowLine = () => {
             textAnchor="middle"
             fill="#fff"
             fontSize={14}
+            fontWeight={500}
             fontFamily="inter"
           >
             <tspan fill="#FDE7CC">{clampedPoint.value} </tspan>
